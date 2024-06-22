@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block body %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+    }
+    .btn {
+        width: 150px;
+        height: 50px;
+        display: inline-block;
+        font-weight: 400;
+        color: #212529;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: #007bff;
+        border: 1px solid transparent;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    .btn:hover {
+        color: #fff;
+        background-color: #0056b3;
+        border-color: #004499;
+    }
+</style>
+</head>
+<div class="container">
+    <div class="row pt-5">
+        <div class="col-lg-8">
+            <body>
+                            <h2 class="mt-5">CAMERA APP </h2>
+                            <form method="post" action="{{ url_for('camera') }}">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button class="btn btn-primary" type="submit" value="Stop/Start" name="stop"><i class="fas fa-stop"></i></button>
+                                <button class="btn btn-primary" type="submit" value="Capture" name="click"><i class="fas fa-camera"></i></button>
+                                <button class="btn btn-primary" type="submit" value="Face Only" name="face"><i class="fas fa-user"></i></button>
+                                <button class="btn btn-primary" type="submit" value="AIrecognition" name="AI"><i class="fas fa-user"></i></button>
+                                <button class="btn btn-primary" type="submit" value="Start/Stop Recording" name="rec"><i class="fas fa-video"></i></button>
+                            </form>
+                            <img src="{{ url_for('video_feed') }}" height="80%">
+                            <h3 style="font-family:courier;">Instructions:</h3>
+                            <ol style="font-family:courier;">
+                            <li>Stop/Start--Toggle between stop or start live streaming</li>
+                            <li>Capture--Take still-shot and save in the 'shots' directory</li>
+                            <li>Face Only--Shows just your face if present(Toggle on/off)</li> 
+                            <li>Start/Stop Recording--Toggle between starting and stopping video recording</li> </ol>	
+                </body>
+
+
+</div>
+{% endblock %}
